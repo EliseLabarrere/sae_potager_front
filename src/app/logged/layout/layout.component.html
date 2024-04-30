@@ -1,0 +1,18 @@
+<div>
+    <router-outlet></router-outlet>
+</div>
+<nav class="nav-mob z-30">
+    <a *ngFor="let nav of navItems" [routerLink]="nav.link" routerLinkActive #navItem="routerLinkActive" [class.active]="navItem.isActive"
+       class="nav-link text-base-300">
+      <mat-icon>{{nav.icon}}</mat-icon>
+      <span class="text-sm">{{ nav.name }}</span>
+    </a>
+</nav>
+
+<div class="flex justify-center items-center h-screen">
+    <a class="absolute bottom-[4.5rem] z-50 btn btn-circle btn-lg bg-primary mx-auto text-white">
+        <mat-icon>add</mat-icon>
+    </a>
+  </div>
+
+

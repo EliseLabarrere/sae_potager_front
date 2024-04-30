@@ -1,0 +1,65 @@
+
+<div class="bg-emerald-900 w-full h-full">
+    <div class="w-full mx-auto absolute bottom-0">
+        <p class="w-56 m-auto my-8 font-bold text-3xl text-center text-white"> POT A POT</p>
+      <div class="w-full h-[38rem] px-8 py-9  m-auto bg-base-100 rounded-t-3xl flex flex-col justify-between">
+        <div>
+          <h2 class="text-primary text-center p-2">Inscription</h2>
+          <!-- FORMULAIRE -->
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <!-- Inputs Formulaire -->
+            <!-- Name -->
+            <div class="form-control w-full max-w-xs">
+                <label class="label">
+                <span class="label-text">Nom d'utilisateur</span>
+                </label>
+                <input type="text" formControlName="name" placeholder="Rentrez un nom d'utilisateur" class="input input-bordered w-full max-w-xs" />
+                <div *ngIf="registerForm.get('name')?.invalid && (registerForm.get('name')?.dirty || registerForm.get('name')?.touched)">
+                    <div class="text-error text-xs mt-2">Nom d'utilisateur est requis.</div>
+                </div>
+            </div>
+            <!-- EMAIL -->
+            <div class="form-control w-full max-w-xs">
+                <label class="label">
+                <span class="label-text">Adresse mail</span>
+                </label>
+                <input type="email" formControlName="email" placeholder="Rentrez votre adresse mail" class="input input-bordered w-full max-w-xs" />
+                <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
+                    <div class="text-error text-xs mt-2">Adresse mail invalide.</div>
+                </div>
+            </div>
+            <!-- PASSWORD -->
+            <div class="form-control w-full max-w-xs">
+                <label class="label">
+                <span class="label-text">Mot de passe</span>
+                </label>
+                <input type="password" formControlName="password" placeholder="Rentrez un mot de passe" class="input input-bordered w-full max-w-xs" />
+                <div *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
+                    <div class="text-error text-xs mt-2">Mot de passe est requis et doit respecter les critères.</div>
+                </div>
+                <p class="text-error w-full text-center" *ngIf="registerError">
+                  {{registerError}}
+                </p>
+            </div>
+            <!-- Bouton -->
+            <div class="flex justify-center">
+                <button  type="submit" class="btn btn-wide mt-4 btn-primary" [disabled]="registerForm.invalid">S'inscrire</button>
+            </div>
+          </form>
+        </div>
+        <div class="flex flex-col justify-center items-center m-2">
+            <div></div>
+            <p>S'inscrire avec</p>
+            <div class="card-peels cards-small w-fit m-2">
+                <a [href]="URLAPI+'/google/auth/redirect'"><img class="w-8 h-8" src="/assets/Logo/google.png"></a>
+            </div>
+        </div>  
+  
+        <!-- Redirection Connexion -->
+        <div class="flex gap-3 mx-auto">
+          <p class="text-black text-sm">Vous avez déjà un compte ?</p>
+          <a [routerLink]="['/login']" class="text-primary-focus text-sm text-primary">Se connecter</a>
+        </div>
+      </div>
+    </div>
+  </div>

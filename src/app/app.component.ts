@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
+import { ApiService } from './shared/services/api.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'potager_front';
+  title = 'peels-front';
+  constructor(
+    public apiService: ApiService,
+    ) {}
 }

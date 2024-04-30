@@ -1,0 +1,47 @@
+<div class="bg-emerald-900 w-full h-full">
+    <div class="w-full mx-auto absolute bottom-0">
+        <p class="w-56 m-auto my-8 font-bold text-3xl text-center text-white"> POT A POT</p>
+      <div class="w-full h-[38rem] px-8 py-9  m-auto bg-base-100 rounded-t-3xl flex flex-col justify-between">
+        <div>
+          <h2 class="text-primary text-center p-2">Connexion</h2>
+          <!-- FORMULAIRE -->
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <!-- Inputs Formulaire -->
+            <!-- EMAIL -->
+            <div class="form-control w-full max-w-xs">
+                <label class="label">
+                <span class="label-text">Adresse mail</span>
+                </label>
+                <input type="email" formControlName="email" placeholder="Rentrez votre adresse mail" class="input input-bordered w-full max-w-xs" />
+            </div>
+            <!-- PASSWORD -->
+            <div class="form-control w-full max-w-xs">
+                <label class="label">
+                <span class="label-text">Mot de passe</span>
+                </label>
+                <input type="password"formControlName="password" placeholder="Rentrez un mot de passe" class="input input-bordered w-full max-w-xs" />
+            </div>
+            <!-- Bouton -->
+            <div class="flex justify-center">
+                <button class="btn btn-wide mt-7 btn-primary" [disabled]="loginForm.invalid">Se connecter</button>
+            </div>
+            </form>
+            <div *ngIf="loginError" class="text-error text-sm mt-2 flex justify-center">
+              <span>{{ loginError }}</span>
+            </div>
+        </div>
+        <div class="flex flex-col justify-center items-center m-2">
+            <p>Se connecter avec</p>
+            <div class="card-peels cards-small w-fit m-2">
+                <a [href]="URLAPI+'/google/auth/redirect'"><img class="w-8 h-8" src="/assets/Logo/google.png"></a>
+            </div>
+        </div>  
+  
+        <!-- Redirection Connexion -->
+        <div class="flex gap-3 mx-auto">
+          <p class="text-black text-sm">Vous n'avez pas de compte ?</p>
+          <a [routerLink]="['/register']" class="text-primary-focus text-sm text-primary">S'Inscrire</a>
+        </div>
+      </div>
+    </div>
+  </div>
