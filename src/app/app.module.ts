@@ -18,6 +18,9 @@ import { PlantsComponent } from './logged/plants/plants.component';
 import { AddMyPlantComponent } from './logged/add-my-plant/add-my-plant.component';
 import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 import { PlantComponent } from './logged/plant/plant.component';
+import { SelectGardenComponent } from './logged/select-garden/select-garden.component';
+import { GardenStep1Component } from './logged/select-garden/garden-step1/garden-step1.component';
+import { GardenStep2Component } from './logged/select-garden/garden-step2/garden-step2.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { PlantComponent } from './logged/plant/plant.component';
     PlantsComponent,
     AddMyPlantComponent,
     NavBarComponent,
-    PlantComponent
+    PlantComponent,
+    GardenStep1Component,
+    GardenStep2Component,
+    SelectGardenComponent
   ],
   imports: [
     MatIconModule,

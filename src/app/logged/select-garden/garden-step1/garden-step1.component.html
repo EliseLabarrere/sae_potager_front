@@ -1,0 +1,8 @@
+<p class="bg-primary px-4 py-2 mb-4 rounded-full text-white font-semibold text-xl w-fit">Etape 1</p>
+<h4 class="mb-8">Où se trouve votre potager ?</h4>
+<div class="flex flex-col items-center justify-center w-full h-full">
+    <a [routerLink]="'/select-garden/step2/' + garden.slug" *ngFor="let garden of gardenTypes" class="mb-4 p-4 rounded-md bg-base-200 w-full text-center">
+        <p class="font-semibold">{{garden.name}}</p>
+    </a>
+</div>
+

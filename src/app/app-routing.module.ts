@@ -11,6 +11,9 @@ import { AccountComponent } from './logged/account/account.component';
 import { LogBookComponent } from './logged/log-book/log-book.component';
 import { AddMyPlantComponent } from './logged/add-my-plant/add-my-plant.component';
 import { PlantComponent } from './logged/plant/plant.component';
+import { SelectGardenComponent } from './logged/select-garden/select-garden.component';
+import { GardenStep1Component } from './logged/select-garden/garden-step1/garden-step1.component';
+import { GardenStep2Component } from './logged/select-garden/garden-step2/garden-step2.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [authGuard] },
@@ -30,6 +33,13 @@ const routes: Routes = [
       { path: 'tips-advices', component: TipsAdvicesComponent},
       { path: 'profil', component: AccountComponent},
       { path: 'log-book', component: LogBookComponent},
+      { path: 'select-garden', 
+        component: SelectGardenComponent,
+        children: [
+          { path: '', pathMatch: 'full', redirectTo: 'step1' },
+          { path: 'step1', component: GardenStep1Component},
+          { path: 'step2/:slug', component: GardenStep2Component},
+        ]},
     ]
   }
 

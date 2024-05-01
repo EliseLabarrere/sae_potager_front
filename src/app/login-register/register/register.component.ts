@@ -43,7 +43,7 @@ export class RegisterComponent {
         let res = await this.apiService.requestApi('/api/auth/register', 'POST', req);
         this.apiService.savTokens(res.token);
         await this.apiService.getUser();
-        this.router.navigate(['/home']);
+        this.router.navigate(['select-garden']);
       } catch (error) {
         console.error('Registration Error:', error);
         this.registerError = "Le mot de passe est surement trop simple"

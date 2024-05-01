@@ -13,7 +13,9 @@ export class AccountComponent implements OnInit{
 
   constructor(
     public apiService: ApiService,
-  ) {}
+  ) {
+    this.user = this.apiService.user;
+  }
 
   ngOnInit(): void {
     this.user = this.apiService.user;

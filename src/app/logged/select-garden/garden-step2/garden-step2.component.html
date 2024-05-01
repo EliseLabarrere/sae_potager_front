@@ -1,0 +1,12 @@
+<div class="flex gap-1 mb-4 items-center">
+    <a class="btn btn-square btn-sm btn-neutral rounded-full mr-4" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+    </a>
+    <p class="bg-primary px-4 py-2 rounded-full text-white font-semibold text-xl w-fit">Etape 2</p>
+</div>
+<h4 class="mb-8">Quel type d'ensoleillement bénéficie votre potager ?</h4>
+<div class="flex flex-col items-center justify-center w-full h-full">
+    <div (click)="selectGarden(sunlight.slug)" *ngFor="let sunlight of sunlightTypes" class="mb-4 p-4 rounded-md bg-base-200 w-full text-center">
+        <p class="font-semibold">{{sunlight.name}}</p>
+    </div>
+</div>
