@@ -17,6 +17,7 @@ import { LogBookComponent } from './logged/log-book/log-book.component';
 import { PlantsComponent } from './logged/plants/plants.component';
 import { AddMyPlantComponent } from './logged/add-my-plant/add-my-plant.component';
 import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
+import { PlantComponent } from './logged/plant/plant.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
     LogBookComponent,
     PlantsComponent,
     AddMyPlantComponent,
-    NavBarComponent
+    NavBarComponent,
+    PlantComponent
   ],
   imports: [
     MatIconModule,

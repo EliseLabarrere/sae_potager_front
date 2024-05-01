@@ -11,7 +11,7 @@ module.exports = {
       {
         potagertheme: {
           //PRIMARY
-          "primary": "#EF6AA5",
+          "primary": "#DC7850",
           "primary-focus":"#6171ff",
           "primary-content":'#ffffff',
           //SECONDARY
@@ -27,7 +27,7 @@ module.exports = {
           "neutral-content":'#FFFFFF',
           //BASE
           "base-100": "#FBFBFF",
-          "base-200": "#f4f4ff",
+          "base-200": "#d0e8e1",
           "base-300": "#C6C6E1",
           "base-content": '#1A1A1A',
 

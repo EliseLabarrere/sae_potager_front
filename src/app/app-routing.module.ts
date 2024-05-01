@@ -10,6 +10,7 @@ import { TipsAdvicesComponent } from './logged/tips-advices/tips-advices.compone
 import { AccountComponent } from './logged/account/account.component';
 import { LogBookComponent } from './logged/log-book/log-book.component';
 import { AddMyPlantComponent } from './logged/add-my-plant/add-my-plant.component';
+import { PlantComponent } from './logged/plant/plant.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [authGuard] },
@@ -24,12 +25,14 @@ const routes: Routes = [
       { path: 'home', component: MyGardenComponent, pathMatch: 'full' },
       { path: 'home', component: MyGardenComponent },
       { path: 'list-plants', component: PlantsComponent},
+      { path: 'list-plants/:id', component: PlantComponent },
       { path: 'add-my-plant', component: AddMyPlantComponent},
       { path: 'tips-advices', component: TipsAdvicesComponent},
       { path: 'profil', component: AccountComponent},
-      { path: 'log-book', component: LogBookComponent}
+      { path: 'log-book', component: LogBookComponent},
     ]
   }
+
 ];
 
 @NgModule({
