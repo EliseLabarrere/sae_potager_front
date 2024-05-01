@@ -9,6 +9,7 @@ import { Location } from '@angular/common';
 export class HeadingComponent {
   @Input() title: any;
   @Input() activeBack: boolean = false;
+  @Input() displayProfile: boolean = true;
 
   constructor(private location: Location) {}
   
