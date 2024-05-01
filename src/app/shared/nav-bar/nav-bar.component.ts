@@ -22,14 +22,14 @@ export class NavBarComponent {
       'icon': 'calendar_month',
     },
     {
-      'name': 'Astuces',
-      'link': '/tips-advices',
-      'icon': "list",
-    },
-    {
       'name': 'Plantes',
       'link': '/list-plants',
       'icon': "grass",
+    },
+    {
+      'name': 'Astuces',
+      'link': '/tips-advices',
+      'icon': "list",
     },
     // {
     //   'name': 'Mon profil',
