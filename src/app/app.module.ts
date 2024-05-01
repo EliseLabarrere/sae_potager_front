@@ -9,13 +9,29 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login-register/login/login.component';
 import { RegisterComponent } from './login-register/register/register.component';
 import { LayoutComponent } from './logged/layout/layout.component';
+import { HeadingComponent } from './shared/layout/heading/heading.component';
+import { AccountComponent } from './logged/account/account.component';
+import { MyGardenComponent } from './logged/my-garden/my-garden.component';
+import { TipsAdvicesComponent } from './logged/tips-advices/tips-advices.component';
+import { LogBookComponent } from './logged/log-book/log-book.component';
+import { PlantsComponent } from './logged/plants/plants.component';
+import { AddMyPlantComponent } from './logged/add-my-plant/add-my-plant.component';
+import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    LayoutComponent
+    LayoutComponent,
+    HeadingComponent,
+    AccountComponent,
+    MyGardenComponent,
+    TipsAdvicesComponent,
+    LogBookComponent,
+    PlantsComponent,
+    AddMyPlantComponent,
+    NavBarComponent
   ],
   imports: [
     MatIconModule,

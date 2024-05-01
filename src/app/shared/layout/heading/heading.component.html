@@ -1,0 +1,18 @@
+<div class="flex justify-between pb-6">
+    <!-- Title -->
+    <div class="flex items-center">
+        <a *ngIf="activeBack" class="btn btn-square btn-sm btn-neutral rounded-full mr-4" (click)="goBack()">
+            <mat-icon>arrow_back</mat-icon>
+        </a>
+        <h3>{{title}}</h3>
+    </div>
+    <!-- Profile -->
+    <a routerLink="/profil">
+        <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="23" cy="23" r="23" fill="#B5DAC8"/>
+            <circle cx="14.6808" cy="21.7766" r="3.89362" stroke="#428370" stroke-width="2"/>
+            <circle cx="30.8298" cy="21.7766" r="3.89362" stroke="#428370" stroke-width="2"/>
+            <path d="M17.617 31.0745C19.8322 33.6716 26.7589 33.6972 28.8723 31.0745" stroke="#428370" stroke-width="2"/>
+        </svg>   
+    </a>
+</div>
