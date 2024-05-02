@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Plant } from '../models/plant.model';
+import { Plant } from '../../models/plant.model';
 import { Input } from '@angular/core';
 
 @Component({

@@ -16,6 +16,7 @@ import { GardenStep1Component } from './logged/select-garden/garden-step1/garden
 import { GardenStep2Component } from './logged/select-garden/garden-step2/garden-step2.component';
 import { AdvicesComponent } from './logged/plant/advices/advices.component';
 import { TimetableComponent } from './logged/plant/timetable/timetable.component';
+import { TipComponent } from './logged/tip/tip.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [authGuard] },
@@ -40,6 +41,7 @@ const routes: Routes = [
        },
       { path: 'add-my-plant', component: AddMyPlantComponent},
       { path: 'tips-advices', component: TipsAdvicesComponent},
+      { path: 'tips-advices/:id', component: TipComponent},
       { path: 'profil', component: AccountComponent},
       { path: 'log-book', component: LogBookComponent},
       { path: 'select-garden', 

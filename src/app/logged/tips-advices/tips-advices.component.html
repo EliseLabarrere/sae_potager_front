@@ -1,4 +1,8 @@
 <app-heading [activeBack]=false title="Astuces & Conseils"></app-heading>
-<div class="px-8 mt-[6.875rem] pb-36">
-    <p>tips-advices works!</p>
+<div class="px-8 mt-[6.875rem] pb-36 flex flex-col gap-4">
+    <div *ngFor="let tip of tips">
+        <app-tips-thumbmail *ngIf="tip.img" [img]="tip.img" [title]="tip.title" [date]="tip.created_at" [id]="tip.id"></app-tips-thumbmail>
+        <app-tips-thumbmail  *ngIf="!tip.img" img="tips-0.jpg" [title]="tip.title" [date]="tip.created_at" [id]="tip.id"></app-tips-thumbmail>
+    </div>
+
 </div>

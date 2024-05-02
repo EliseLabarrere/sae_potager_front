@@ -1,5 +1,6 @@
 import { CategPlant } from "./categ_plant.model";
 import { CategGarden } from "./categ_garden.model";
+import { Tip } from "./tip.model";
 export interface Plant {
     id: number,
     name: string,
@@ -24,6 +25,7 @@ export interface Plant {
             other_plant: Plant
         }
     ],
+    tips:Tip[],
     created_at: any,
     updated_at: any,
 }
