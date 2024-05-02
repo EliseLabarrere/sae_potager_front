@@ -171,21 +171,12 @@
         }
       }
 
-<<<<<<< Updated upstream
-      .nav-list{ 
-        @apply  flex bg-primary p-2 rounded;  
-    
+      .nav-list{
+        @apply  flex bg-primary p-2 rounded;
+
         .onglet {
             @apply text-white flex justify-center p-2  transition-all rounded w-1/2;
-    
-=======
-      .nav-list{
-        @apply  flex bg-base-200 p-2 rounded;
 
-        .onglet {
-            @apply flex justify-center p-2  transition-all rounded w-1/2;
-
->>>>>>> Stashed changes
             &.active{
                 @apply bg-white text-base-content;
             }
