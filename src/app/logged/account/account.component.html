@@ -11,9 +11,20 @@
             <p>{{user?.email}}</p>
         </div>
 
+        <div class="mb-4 p-4 rounded-md w-full flex flex-col justify-center shadow-md">
+            <h4 class="text-center">Jours consécutifs d’arrosage</h4>
+            <div *ngIf="user" class="flex gap-4 w-full items-center">
+                <img alt="mascotte" src="../../../assets/mascotte.png" class="w-32"/>
+                <p class="font-semibold text-success w-full text-center"><span class="text-6xl">{{user.watering_streak}}</span>
+                    <span *ngIf="(user.watering_streak>1)" > jours</span>
+                    <span *ngIf="(user.watering_streak<=1)"> jour</span>
+                </p>
+            </div>
+        </div>
+
         <div class="bg-[#212E50] text-white p-4 rounded-md text-center w-full">
             <p class="mb-2">Mon type de jardin : <br><span class="font-semibold">{{user?.categ_garden?.name}}</span></p>
-            <a routerLink="/select-garden" class="underline text-primary">Changer de type de jardin</a>
+            <a routerLink="/select-garden" class="underline text-base-200">Changer de type de jardin</a>
         </div>
         
         <div class="flex justify-center pt-4">

@@ -6,6 +6,7 @@ export interface User {
     email: string,
     img: string | null,
     categ_garden: CategGarden,
+    watering_streak: number,
     created_at: any,
     updated_at: any,
 }
