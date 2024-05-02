@@ -3,6 +3,8 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { HttpClientModule } from '@angular/common/http';
 import {MatIconModule} from '@angular/material/icon'; //Material for Icons
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -43,9 +45,12 @@ import { PlantThumbnailComponent } from './shared/plant-thumbnail/plant-thumbnai
     GardenStep1Component,
     GardenStep2Component,
     SelectGardenComponent,
+<<<<<<< Updated upstream
     AdvicesComponent,
     TimetableComponent,
     PlantThumbnailComponent
+=======
+>>>>>>> Stashed changes
   ],
   imports: [
     MatIconModule,
@@ -53,6 +58,10 @@ import { PlantThumbnailComponent } from './shared/plant-thumbnail/plant-thumbnai
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ],
   providers: [
     provideClientHydration()
