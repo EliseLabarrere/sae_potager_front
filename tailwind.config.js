@@ -32,7 +32,7 @@ module.exports = {
           "base-content": '#1A1A1A',
 
           "info": "#EFECEC",
-          "success": "#66c5b3",
+          "success": "#87BDAF",
           "warning": "#ffc838",
           "error": "#ff3257",
 

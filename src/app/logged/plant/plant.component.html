@@ -21,9 +21,10 @@
           <div class="flex items-center gap-2">
           <h3>{{plant?.name}}</h3>
           </div>
-          <button class="btn btn-primary"><mat-icon>add</mat-icon>Ajouter</button>
+            <button  class="btn btn-primary"><mat-icon>add</mat-icon>Ajouter</button>
         </div>  
         <div class="flex-1 overflow-y-auto">
+          <div class="justify-center gap-2 bg-base-200 text-[#125944] rounded-md flex items-center p-4 w-full mb-4"><mat-icon>check</mat-icon> Vous possédez  1 {{plant?.name}}</div>
           <p class="mb-4">{{plant?.description}}</p>
 
           <!--Compatibilité-->
@@ -57,7 +58,7 @@
 
           <div class="mt-8">
             <h4 class="mb-2">Astuces et conseils: <span class="text-[#125944]">{{plant?.name}}</span></h4>
-            <div *ngFor="let tip of plant?.tips">
+            <div *ngFor="let tip of plant?.tips" class="mb-4">
               <app-tips-thumbmail *ngIf="tip.img" [img]="tip.img" [title]="tip.title" [date]="tip.created_at" [id]="tip.id"></app-tips-thumbmail>
               <app-tips-thumbmail  *ngIf="!tip.img" img="tips-0.jpg" [title]="tip.title" [date]="tip.created_at" [id]="tip.id"></app-tips-thumbmail>
             
