@@ -1,0 +1,5 @@
+<app-heading [activeBack]=false title="Mon carnet de bord"></app-heading>
+<div class="px-8 mt-[6.875rem] pb-36">
+    <mwl-calendar-month-view *ngIf="reloadCalendar" [viewDate]="dateVariable" [events]="events" (dayClicked)="handleDayClick($event)"></mwl-calendar-month-view>
+</div>
+
