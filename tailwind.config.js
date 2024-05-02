@@ -11,11 +11,11 @@ module.exports = {
       {
         potagertheme: {
           //PRIMARY
-          "primary": "#DC7850",
+          "primary": "#EC7245",
           "primary-focus":"#6171ff",
           "primary-content":'#ffffff',
           //SECONDARY
-          "secondary": "#a5e3d8",
+          "secondary": "#F3B3B3",
           "secondary-focus":"#86d7c8",
           "secondary-content":'#1A1A1A',
           //ALERT
@@ -31,7 +31,7 @@ module.exports = {
           "base-300": "#C6C6E1",
           "base-content": '#1A1A1A',
 
-          "info": "#6171ff",
+          "info": "#EFECEC",
           "success": "#66c5b3",
           "warning": "#ffc838",
           "error": "#ff3257",

@@ -1,0 +1,37 @@
+<!--SEMIS-->
+<div *ngIf="plant && plant.start_month !== undefined && plant.end_month !== undefined" class="mb-4">
+<h5 class="mb-2">Période de semis</h5>
+<div class="flex">
+    <ng-container *ngFor="let month of months; let i = index">
+    <div [ngClass]="{
+        'rounded-l-md': i === 0,
+        'rounded-r-md': i === months.length - 1,
+        'rounded-none': i !== 0 && i !== months.length - 1
+        }" class="w-1/12 text-center border border-gray-300 p-2" [class.bg-info]="i+1 >= plant.start_month && i+1 <= plant.end_month">
+        {{ month }}
+    </div>
+    </ng-container>
+</div>
+</div>  
+
+<!--RECOLTE-->
+<div *ngIf="plant && plant.start_harvest_month !== undefined && plant.end_harvest_month !== undefined" class="mb-8">
+<h5 class="mb-2">Période de récolte</h5>
+<div class="flex">
+    <ng-container *ngFor="let month of months; let i = index">
+    <div [ngClass]="{
+        'rounded-l-md': i === 0,
+        'rounded-r-md': i === months.length - 1,
+        'rounded-none': i !== 0 && i !== months.length - 1
+        }" class="w-1/12 text-center border border-gray-300 p-2" [class.bg-info]="i+1 >= plant.start_harvest_month && i+1 <= plant.end_harvest_month">
+        {{ month }}
+    </div>
+    </ng-container>
+</div>
+</div>
+
+<!--TEMPS DE CROISSANCE-->
+<div *ngIf="plant && plant.growing_time" class="mb-8 flex gap-2 items-center">
+    <h5 >Temps de croissance : </h5>
+    <p class="text-primary font-semibold">{{growing}}</p>
+</div>

@@ -14,6 +14,8 @@ import { PlantComponent } from './logged/plant/plant.component';
 import { SelectGardenComponent } from './logged/select-garden/select-garden.component';
 import { GardenStep1Component } from './logged/select-garden/garden-step1/garden-step1.component';
 import { GardenStep2Component } from './logged/select-garden/garden-step2/garden-step2.component';
+import { AdvicesComponent } from './logged/plant/advices/advices.component';
+import { TimetableComponent } from './logged/plant/timetable/timetable.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [authGuard] },
@@ -28,7 +30,14 @@ const routes: Routes = [
       { path: 'home', component: MyGardenComponent, pathMatch: 'full' },
       { path: 'home', component: MyGardenComponent },
       { path: 'list-plants', component: PlantsComponent},
-      { path: 'list-plants/:id', component: PlantComponent },
+      { path: 'list-plants/:id',
+         component: PlantComponent,
+         children: [
+          { path: '', pathMatch: 'full', redirectTo: 'timetable' },
+          { path: 'timetable', component: TimetableComponent,data: { id: '${id}' }},
+          { path: 'advices', component: AdvicesComponent,data: { id: '${id}' }},
+        ],
+       },
       { path: 'add-my-plant', component: AddMyPlantComponent},
       { path: 'tips-advices', component: TipsAdvicesComponent},
       { path: 'profil', component: AccountComponent},

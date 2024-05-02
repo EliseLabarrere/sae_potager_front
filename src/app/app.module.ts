@@ -21,6 +21,9 @@ import { PlantComponent } from './logged/plant/plant.component';
 import { SelectGardenComponent } from './logged/select-garden/select-garden.component';
 import { GardenStep1Component } from './logged/select-garden/garden-step1/garden-step1.component';
 import { GardenStep2Component } from './logged/select-garden/garden-step2/garden-step2.component';
+import { AdvicesComponent } from './logged/plant/advices/advices.component';
+import { TimetableComponent } from './logged/plant/timetable/timetable.component';
+import { PlantThumbnailComponent } from './shared/plant-thumbnail/plant-thumbnail.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { GardenStep2Component } from './logged/select-garden/garden-step2/garden
     PlantComponent,
     GardenStep1Component,
     GardenStep2Component,
-    SelectGardenComponent
+    SelectGardenComponent,
+    AdvicesComponent,
+    TimetableComponent,
+    PlantThumbnailComponent
   ],
   imports: [
     MatIconModule,

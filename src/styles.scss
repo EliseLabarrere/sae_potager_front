@@ -169,13 +169,13 @@
       }
 
       .nav-list{ 
-        @apply  flex bg-base-200 p-2 rounded;  
+        @apply  flex bg-primary p-2 rounded;  
     
         .onglet {
-            @apply flex justify-center p-2  transition-all rounded w-1/2;
+            @apply text-white flex justify-center p-2  transition-all rounded w-1/2;
     
             &.active{
-                @apply bg-white text-primary;
+                @apply bg-white text-base-content;
             }
         }
     }
