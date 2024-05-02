@@ -1,16 +1,39 @@
-<app-heading [activeBack]=false title="Mon carnet de bord"></app-heading>
+<app-heading [activeBack]="false" title="Mon carnet de bord"></app-heading>
 <div class="px-8 mt-[6.875rem] pb-36">
-    <mwl-calendar-month-view *ngIf="reloadCalendar" [viewDate]="dateVariable" [events]="events" (dayClicked)="handleDayClick($event)"></mwl-calendar-month-view>
+  <mwl-calendar-month-view
+    *ngIf="reloadCalendar"
+    [viewDate]="dateVariable"
+    [events]="events"
+    (dayClicked)="handleDayClick($event)"
+  ></mwl-calendar-month-view>
 </div>
-<dialog #dialogDay class="w-4/5 p-4 shadow-lg rounded-lg bg-white">
+<dialog #dialogDay class="w-4/5 p-4 shadow-lg rounded-lg bg-[#212E50]">
   <div class="flex flex-col justify-between h-full">
-      <div class="flex justify-end">
-          <button (click)="dialogDay.close()">
-              <mat-icon>close</mat-icon>
-          </button>
+    <div class="flex justify-end text-white">
+      <button (click)="dialogDay.close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <!-- Modal content -->
+    <div *ngIf="modalWatering">
+      <p class="text-white text-lg font-bold text-center mt-2 mb-4">
+        Arrosage du {{ modalDay }}
+      </p>
+      <div class="grid grid-cols-3 gap-4 m-6 mt-2">
+        <a
+          [routerLink]="[plant.id]"
+          *ngFor="let plant of modalPlants"
+          class="bg-base-200 flex flex-col items-center justify-center rounded-md h-24"
+        >
+          <app-plant-thumbnail [plant]="plant"></app-plant-thumbnail>
+        </a>
       </div>
-      <!-- Modal content -->
-            <h2>Details de l'événement</h2>
-            <p>Date: {{modalDay}}</p>
+    </div>
+
+    <div *ngIf="!modalWatering">
+      <p class="text-white text-lg font-bold text-center mt-2 mb-4">
+        Pas d'arrosage le {{ modalDay }}
+      </p>
+    </div>
   </div>
 </dialog>

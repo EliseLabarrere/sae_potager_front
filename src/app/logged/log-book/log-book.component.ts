@@ -16,6 +16,8 @@ export class LogBookComponent {
   lastDisplayedDay: Date | String = new Date(this.dateVariable);
 
   modalDay: String = "";
+  modalPlants: any;
+  modalWatering: any;
 
   reloadCalendar: boolean = false;
   events: CalendarEvent[] = [];
@@ -73,14 +75,19 @@ export class LogBookComponent {
     const todayFormatted: string = this.formatDate(today);
 
     if (clickedDateFormatted >= todayFormatted) {
-      console.log('Date cliquée:', clickedDateFormatted);
-      this.modalDay = clickedDateFormatted;
+      this.modalDay = this.formatDateWrite(clickedDateFormatted);
+
+      this.apiService.requestApi('/api/task/one', 'POST', { day: clickedDateFormatted}).then(
+        (data) => {
+          this.modalPlants = data.wateringPlants;
+          this.modalPlants.length > 0 ? this.modalWatering = 1 : 0;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+
       this.dialogDay.nativeElement.showModal();
-      // this.dialog.open(EventDetailsModalComponent, {
-      //   data: { date: clickedDate },
-      // });
-    } else {
-      console.log("La date sélectionnée est antérieure à aujourd'hui.");
     }
   }
 
@@ -89,6 +96,19 @@ export class LogBookComponent {
     const month: string = (date.getMonth() + 1).toString().padStart(2, '0');
     const day: string = date.getDate().toString().padStart(2, '0');
     return `${year}-${month}-${day}`;
+  }
+
+  formatDateWrite(dateString: string): string {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const months = [
+      "janvier", "février", "mars", "avril", "mai", "juin",
+      "juillet", "août", "septembre", "octobre", "novembre", "décembre"
+    ];
+    const monthName = months[date.getMonth()];
+    const formattedDate = day + ' ' + monthName;
+
+    return formattedDate;
   }
 
 }

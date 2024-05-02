@@ -45,12 +45,9 @@ import { PlantThumbnailComponent } from './shared/plant-thumbnail/plant-thumbnai
     GardenStep1Component,
     GardenStep2Component,
     SelectGardenComponent,
-<<<<<<< Updated upstream
     AdvicesComponent,
     TimetableComponent,
     PlantThumbnailComponent
-=======
->>>>>>> Stashed changes
   ],
   imports: [
     MatIconModule,
