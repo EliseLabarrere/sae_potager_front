@@ -14,7 +14,7 @@ export class PlantsComponent implements OnInit{
   categs?: CategPlant[] = [];
   plantsOfMonth?: Plant[] = [];
   searchForm: FormGroup;
-  resultSearch: any[] | undefined = undefined;
+  resultSearch: Plant[] | undefined = undefined;
 
   constructor(
     private fb: FormBuilder,

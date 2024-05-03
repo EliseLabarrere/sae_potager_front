@@ -1,4 +1,54 @@
 <app-heading [activeBack]=false title="Ajouter une plante"></app-heading>
 <div class="px-8 mt-[6.875rem] pb-36">
-    <p>add-my-plant works!</p>
+    <div *ngIf="showQuestion">
+        <h4 class="mb-4">Avez-vous une plante en tête à ajouter à votre jardin ?</h4>
+        <div class="grid grid-cols-2 gap-4">
+            <button (click)="getSearch()" class="btn btn-primary mb-2">Oui</button>
+            <a routerLink="/list-plants" class="btn btn-primary btn-outline mb-2">Non</a>
+        </div>
+    </div>
+    <div *ngIf="!showQuestion">
+        <h5 class="mb-4">Rechercher la plante en tête</h5>
+        <form [formGroup]="searchForm" class="my-8">
+            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search Plant</label>
+            <div class="flex justify-between bg-white p-4 input input-bordered align-middle items-center">
+                <input formControlName="plant" type="search" id="default-search" class="flex align-center w-full text-sm"
+                    placeholder="Rechercher une plante" required />
+                <button (click)="search()"><mat-icon>search</mat-icon></button>
+            </div>
+        </form>
+        <!-- Search result -->
+        <div *ngIf="resultSearch">
+            <div class="grid grid-cols-3 gap-4">
+                <div *ngFor="let result of resultSearch">
+                    <a [routerLink]="[result.id]" class="bg-base-200 flex flex-col items-center justify-center rounded-md h-24">
+                    <app-plant-thumbnail [plant]="result"></app-plant-thumbnail>
+                    </a>
+                    <button (click)="openModalAddPlant(result)" class="btn btn-primary w-full mt-2">Ajouter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+
+<!-- Modals ajouter plante -->
+<dialog #dialogAddPlant class="w-4/5 p-4 shadow-lg rounded-lg bg-[#212E50]">
+    <div class="flex flex-col justify-between h-full">
+        <div class="flex justify-end">
+        <button (click)="dialogAddPlant.close()"><mat-icon class="text-white">close</mat-icon></button> 
+        </div>
+        <div class="flex gap-4 mb-4">
+            <div class="flex w-full justify-center">
+                <img  [src]="'../../../assets/'+plantChosen?.img" alt="plant image" class="h-32 object-cover rounded-lg">
+            </div>
+            <div class="flex flex-col">
+                <p class=" text-white">Combien de <span class="text-success">{{plantChosen?.name}}s</span> à ajouter à votre potager</p>
+                <input type="number" class="input input-bordered w-full mt-2" [(ngModel)]="quantity" placeholder="Quantité" required>
+            </div>
+        </div>
+        <!-- Modal content -->
+        <button (click)="validAddPlant()" class="btn btn-primary w-full mb-2">Ajouter à mon potager</button>
+    </div>
+</dialog>

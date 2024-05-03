@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../shared/services/api.service';
 import { Plant } from '../../shared/models/plant.model';
 import { User } from '../../shared/models/user.model';
+import { error } from 'console';
 
 @Component({
   selector: 'app-plant',
@@ -11,12 +12,15 @@ import { User } from '../../shared/models/user.model';
   styleUrl: './plant.component.scss'
 })
 export class PlantComponent implements OnInit{
+  @ViewChild('dialogAddPlant') dialogAddPlant: any;
   user: User|undefined;
   plant?: Plant = undefined;
   numberOfPlant: number = 0;
 
   watering: string = "";
   compatibility: boolean | undefined;
+
+  quantity: number = 1;
 
   constructor(
     public apiService: ApiService,
@@ -25,10 +29,14 @@ export class PlantComponent implements OnInit{
     private location: Location,
   ) {
     this.user = this.apiService.user;
+  }
+
+  ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.apiService.requestApi('/api/plant/' + params['id']).then(
         (data) => {
           this.plant = data;
+          console.log(data);
           if (!this.plant) {
             this.router.navigate(['list-plants']);
           }else{
@@ -43,9 +51,6 @@ export class PlantComponent implements OnInit{
         },
       );
     });
-  }
-
-  ngOnInit(): void {
   }
 
   isCompatible(): boolean | undefined {
@@ -99,4 +104,27 @@ setNumberOfPlant(id:number){
   goBack() {
     this.location.back();
   }
+
+  openModalAddPlant() {
+    this.dialogAddPlant.nativeElement.showModal();
+  }
+
+  validAddPlant(){
+    let req={
+      plant_id: this.plant?.id,
+      number_to_add: this.quantity,
+    }
+    this.apiService.requestApi('/api/user/addInGarden/', 'POST', req).then(
+      (data) => {
+        console.log('success plant added', data);
+        this.numberOfPlant += req.number_to_add;
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
+    console.log('plant added');
+    this.dialogAddPlant.nativeElement.close();
+  }
+
 }
