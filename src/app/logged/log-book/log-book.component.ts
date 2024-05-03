@@ -46,7 +46,6 @@ export class LogBookComponent {
 
     this.apiService.requestApi('/api/task/completed', 'POST', req).then(
       (data) => {
-        console.log(data)
         for (let i = 0; i < data.tasks.length; i++) {
           let color = data.tasks[i].watering ? "#212e50" : "#ec7245";
           const event = {

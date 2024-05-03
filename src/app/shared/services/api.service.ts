@@ -105,7 +105,7 @@ export class ApiService {
         });
     });
   }
-  
+
 
   isLogged(): boolean{
     return this.token !== undefined;
@@ -121,7 +121,6 @@ export class ApiService {
       (data) => {
         this.deleteToken();
         this.user = undefined;
-        console.log('deco', this.user, this.token, this.isLogged());
         this.router.navigate(['/login']);
       },
       (error) => {

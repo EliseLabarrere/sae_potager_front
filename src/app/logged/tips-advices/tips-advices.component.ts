@@ -20,7 +20,6 @@ export class TipsAdvicesComponent {
     this.apiService.requestApi('/api/tips/').then(
       (data) => {
         this.tips = data;
-        console.log(this.tips);
       },
       (error) => {
         console.log(error);

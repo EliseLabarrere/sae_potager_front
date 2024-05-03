@@ -43,7 +43,6 @@ export class GardenStep2Component {
     let garden = "";
     this.route.params.subscribe((params) => {
       garden = params['slug'] + "_" + slug;
-      console.log(garden);
       if (garden && garden !== "") {
         let req = {
           categ_garden: garden,
@@ -59,6 +58,6 @@ export class GardenStep2Component {
       }
     });
   }
-  
-  
+
+
 }

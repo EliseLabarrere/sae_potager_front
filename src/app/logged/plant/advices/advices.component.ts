@@ -43,8 +43,6 @@ export class AdvicesComponent implements OnInit {
           this.noCompatible.push(element.other_plant);
         }
       }
-      console.log(this.compatible);
-      console.log(this.noCompatible);
     }
   }
 }

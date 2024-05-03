@@ -28,7 +28,6 @@ export class PlantComponent implements OnInit{
       this.apiService.requestApi('/api/plant/' + params['id']).then(
         (data) => {
           this.plant = data;
-          console.log(this.plant);
           if (!this.plant) {
             this.router.navigate(['list-plants']);
           }else{
@@ -61,9 +60,7 @@ export class PlantComponent implements OnInit{
   }
 
   setWateringTime() {
-    console.log("before");
     if (this.plant && this.plant.watering_rythm) {
-      console.log("test");
       const wateringMap: { [key: number]: string } = {
         1: "1 fois par jour",
         2: "1 fois tous les deux jours",

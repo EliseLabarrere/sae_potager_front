@@ -28,7 +28,6 @@ export class PlantsComponent implements OnInit{
       this.apiService.requestApi('/api/plants/').then(
         (data) => {
           this.categs = data;
-          console.log(this.categs);
         },
         (error) => {
           console.log(error);
@@ -37,7 +36,6 @@ export class PlantsComponent implements OnInit{
       this.apiService.requestApi('/api/plant/month').then(
         (data) => {
           this.plantsOfMonth = data;
-          console.log(this.plantsOfMonth);
         },
         (error) => {
           console.log(error);
@@ -63,19 +61,18 @@ export class PlantsComponent implements OnInit{
       this.cancelSearch();
       return;
     };
-  
+
     try {
       let res = await this.apiService.requestApi('/api/search/plant/', 'GET', req);
-  
+
       // Mettez à jour l'URL avec le paramètre de recherche
       this.router.navigate([], {
         relativeTo: this.route,
         queryParams: { search: this.searchForm.value['plant'] },
         queryParamsHandling: 'merge',
       });
-  
+
       this.resultSearch = res;
-      console.log(this.resultSearch);
     } catch (error) {
       console.log(error)
     }
@@ -83,7 +80,7 @@ export class PlantsComponent implements OnInit{
 
   cancelSearch() {
     this.resultSearch = undefined;
-  
+
     // Supprimez le paramètre de recherche de l'URL
     this.router.navigate([], {
       relativeTo: this.route,
@@ -91,5 +88,5 @@ export class PlantsComponent implements OnInit{
       queryParamsHandling: 'merge',
     });
   }
-  
+
 }

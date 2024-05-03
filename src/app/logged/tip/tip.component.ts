@@ -25,7 +25,6 @@ export class TipComponent {
       this.apiService.requestApi('/api/tips/' + params['id']).then(
         (data) => {
           this.tip = data;
-          console.log(this.tip);
           if (!this.tip) {
             this.router.navigate(['tips-advice']);
           }
