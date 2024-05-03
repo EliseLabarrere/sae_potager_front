@@ -13,6 +13,7 @@ import { User } from '../../shared/models/user.model';
 export class PlantComponent implements OnInit{
   user: User|undefined;
   plant?: Plant = undefined;
+  numberOfPlant: number = 0;
 
   watering: string = "";
   compatibility: boolean | undefined;
@@ -34,6 +35,7 @@ export class PlantComponent implements OnInit{
             this.compatibility = this.isCompatible();
             this.setWateringTime();
           }
+          this.setNumberOfPlant(data.id)
         },
         (error) => {
           console.log(error);
@@ -77,6 +79,20 @@ export class PlantComponent implements OnInit{
     this.watering = wateringMap[this.plant.watering_rythm] || "";
     }
 
+}
+
+setNumberOfPlant(id:number){
+  console.log('id de la plant', id)
+  this.apiService.requestApi('/api/user/numberPlants/' + this.plant?.id).then(
+    (data) => {
+      this.numberOfPlant = data.number_of_plants;
+      console.log(data)
+    },
+    (error) => {
+      console.log(error);
+      this.router.navigate(['list-plants']);
+    },
+  );
 }
 
 

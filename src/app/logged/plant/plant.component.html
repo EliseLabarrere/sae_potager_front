@@ -9,22 +9,22 @@
         <path d="M28.6608 45.1095L37.9277 42.6264L36.1017 30.4397L35.6841 27.6726L23.1269 31.0374L28.6608 45.1095ZM29.3806 47.7955C28.7538 47.9634 28.1544 47.9201 27.5824 47.6655C27.0104 47.411 26.5651 47.0025 26.2464 46.4401L21.3956 34.3801L38.8549 29.7019L40.6839 42.5716C40.6892 43.218 40.5077 43.7944 40.1397 44.3008C39.7716 44.8073 39.2741 45.1445 38.6474 45.3125L34.014 46.554L29.3806 47.7955ZM20.0044 31.874L38.8067 26.836L38.0869 24.1499L19.2847 29.188L20.0044 31.874ZM27.2464 21.2969C26.6466 19.0585 26.9202 16.946 28.0672 14.9593C29.2142 12.9726 30.9069 11.6794 33.1453 11.0796C33.6851 13.0941 33.515 15.011 32.635 16.8302C31.7549 18.6494 30.3944 19.9735 28.5534 20.8027L29.3091 23.6231L40.0533 20.7442L41.4927 26.1162C41.6906 26.8549 41.5971 27.5577 41.212 28.2247C40.8269 28.8916 40.265 29.3241 39.5264 29.522L20.7241 34.5601C19.9854 34.758 19.2826 34.6644 18.6157 34.2793C17.9487 33.8943 17.5163 33.3324 17.3183 32.5938L15.8789 27.2217L26.6231 24.3428L25.8673 21.5224C23.8584 21.7249 22.018 21.2584 20.3463 20.1229C18.6746 18.9874 17.5689 17.4125 17.0291 15.3979C19.2674 14.7982 21.38 15.0718 23.3667 16.2188C25.3534 17.3658 26.6466 19.0585 27.2464 21.2969Z" fill="#064E3B"/>
         <rect x="38.1837" y="35.3383" width="13.656" height="2.73121" transform="rotate(165 38.1837 35.3383)" fill="#064E3B"/>
         </svg>
-          
+
     </a>
   </div>
   <div  class="absolute top-12 mx-auto z-40 flex w-full justify-center">
     <img class="max-h-36" alt="plant" [src]="'../../../assets/'+plant?.img_group"/>
   </div>
-    <div class="w-full mx-auto m-[54px]"> 
+    <div class="w-full mx-auto m-[54px]">
       <div class="w-full px-8 pb-36 pt-[4.5rem]  m-auto bg-base-100 rounded-t-3xl flex flex-col overflow-y-auto max-h-[750px]">
         <div class="flex w-full pb-6 justify-between">
           <div class="flex items-center gap-2">
           <h3>{{plant?.name}}</h3>
           </div>
             <button  class="btn btn-primary"><mat-icon>add</mat-icon>Ajouter</button>
-        </div>  
+        </div>
         <div class="flex-1 overflow-y-auto">
-          <div class="justify-center gap-2 bg-base-200 text-[#125944] rounded-md flex items-center p-4 w-full mb-4"><mat-icon>check</mat-icon> Vous possédez  1 {{plant?.name}}</div>
+          <div *ngIf="numberOfPlant > 0" class="justify-center gap-2 bg-base-200 text-[#125944] rounded-md flex items-center p-4 w-full mb-4"><mat-icon>check</mat-icon> <p>Vous possédez  {{ numberOfPlant }} {{plant?.name}}<span *ngIf="numberOfPlant > 1">s</span></p></div>
           <p class="mb-4">{{plant?.description}}</p>
 
           <!--Compatibilité-->
@@ -61,7 +61,7 @@
             <div *ngFor="let tip of plant?.tips" class="mb-4">
               <app-tips-thumbmail *ngIf="tip.img" [img]="tip.img" [title]="tip.title" [date]="tip.created_at" [id]="tip.id"></app-tips-thumbmail>
               <app-tips-thumbmail  *ngIf="!tip.img" img="tips-0.jpg" [title]="tip.title" [date]="tip.created_at" [id]="tip.id"></app-tips-thumbmail>
-            
+
             </div>
           </div>
 
