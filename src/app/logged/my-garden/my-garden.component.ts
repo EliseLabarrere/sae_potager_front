@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../shared/services/api.service';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-my-garden',
@@ -7,25 +8,18 @@ import { ApiService } from '../../shared/services/api.service';
   styleUrl: './my-garden.component.scss',
 })
 export class MyGardenComponent {
-  allMyPlants: any;
+  @ViewChild('dialogRemoveFromGarden') dialogRemoveFromGarden: any;
   wateringPlants: any;
   haveToWatering: boolean = true;
+  plantsThisMonth: any;
+  plantsNextThreeMonths: any;
+  allMyPlants: any;
+  harvestedPlant: any = null;
 
-  constructor(
-    public apiService: ApiService,
-  ) {
-    this.apiService.requestApi('/api/user/plantInGarden/').then(
+  constructor(public apiService: ApiService) {
+    this.apiService.requestApi('/api/task/checkDailyTask').then(
       (data) => {
-        this.allMyPlants = data.plantsInGarden
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-
-    this.apiService.requestApi('/api/task/checkDailyTask/').then(
-      (data) => {
-        console.log('daily tasks', data.status)
+        this.haveToWatering = data.success;
       },
       (error) => {
         console.log(error);
@@ -33,14 +27,63 @@ export class MyGardenComponent {
     );
 
     let today = new Date();
-    this.apiService.requestApi('/api/task/one', 'POST', { day: today}).then(
+    this.apiService.requestApi('/api/task/one', 'POST', { day: today }).then(
       (data) => {
         this.wateringPlants = data.wateringPlants;
-        this.wateringPlants.length > 0 ? this.haveToWatering = true : false;
       },
       (error) => {
         console.log(error);
       }
     );
+
+    this.apiService.requestApi('/api/user/nextHarvests/').then(
+      (data) => {
+        this.plantsThisMonth = data.plantsThisMonth;
+        this.plantsNextThreeMonths = data.plantsNextThreeMonths;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    this.apiService.requestApi('/api/user/plantInGarden/').then(
+      (data) => {
+        this.allMyPlants = data.plantsInGarden;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  doDailyTasks() {
+    this.apiService.requestApi('/api/task/valid').then(
+      (data) => {
+        this.haveToWatering = false;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  harvestModel(plant: any) {
+    this.harvestedPlant = plant;
+    this.dialogRemoveFromGarden.nativeElement.showModal();
+  }
+
+  harvestSave(id: any, remove: boolean) {
+    this.apiService
+      .requestApi('/api/task/harvest', 'POST', {
+        idPlant: id,
+        removeFromGarden: remove,
+      })
+      .then(
+        (data) => {
+          console.log(data)
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 }
