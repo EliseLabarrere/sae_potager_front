@@ -12,7 +12,7 @@ export class MyGardenComponent {
   wateringPlants: any;
   haveToWatering: boolean = true;
   plantsThisMonth: any;
-  plantsNextThreeMonths: any;
+  plantsNextMonths: any;
   allMyPlants: any;
   harvestedPlant: any = null;
 
@@ -39,7 +39,7 @@ export class MyGardenComponent {
     this.apiService.requestApi('/api/user/nextHarvests/').then(
       (data) => {
         this.plantsThisMonth = data.plantsThisMonth;
-        this.plantsNextThreeMonths = data.plantsNextThreeMonths;
+        this.plantsNextMonths = data.plantsNextMonths;
       },
       (error) => {
         console.log(error);
