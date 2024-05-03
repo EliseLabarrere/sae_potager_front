@@ -39,7 +39,7 @@ const routes: Routes = [
           { path: 'advices', component: AdvicesComponent,data: { id: '${id}' }},
         ],
        },
-      { path: 'add-my-plant/:id', component: AddMyPlantComponent},
+      { path: 'add-my-plant', component: AddMyPlantComponent},
       { path: 'tips-advices', component: TipsAdvicesComponent},
       { path: 'tips-advices/:id', component: TipComponent},
       { path: 'profil', component: AccountComponent},

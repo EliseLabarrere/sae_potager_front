@@ -81,8 +81,11 @@ export class MyGardenComponent {
 
   harvestModel(plant: any) {
     this.harvestedPlant = plant;
-    this.dialogRemoveFromGarden.nativeElement.showModal();
-  }
+    setTimeout(() => {
+        this.dialogRemoveFromGarden.nativeElement.showModal();
+    });
+}
+
 
   harvestSave(id: any, remove: boolean) {
     this.apiService
@@ -93,6 +96,7 @@ export class MyGardenComponent {
       .then(
         (data) => {
           console.log(data)
+          this.dialogRemoveFromGarden.nativeElement.close();
         },
         (error) => {
           console.log(error);
