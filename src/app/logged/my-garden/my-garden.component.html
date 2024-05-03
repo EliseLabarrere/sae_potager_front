@@ -2,7 +2,7 @@
 <div class="px-8 mt-[6.875rem] pb-36">
   <div class="section">
     <h4>Missions du jour</h4>
-    <div *ngIf="haveToWatering" class="p-6 bg-success rounded-md">
+    <div *ngIf="haveToWatering && this.wateringPlants.length != 0" class="p-6 bg-success rounded-md">
       <div class="grid grid-cols-3 gap-4">
         <a
           [routerLink]="'/list-plants/' + [plant.id]"
@@ -20,7 +20,7 @@
       </button>
     </div>
     <div
-      *ngIf="!haveToWatering"
+      *ngIf="!haveToWatering && this.wateringPlants.length != 0"
       class="p-6 bg-success text-white rounded-md flex flex-row"
     >
       <img
@@ -31,6 +31,20 @@
       <div>
         <h5>Félicitation,</h5>
         <p>Tu as pensé à arroser toutes tes plantes !</p>
+      </div>
+    </div>
+    <div
+      *ngIf="this.wateringPlants.length == 0"
+      class="p-6 bg-success text-white rounded-md flex flex-row"
+    >
+      <img
+        class="w-20 mr-6"
+        src="../../../assets/mascotte-triste.png"
+        alt="Mascotte heureuse"
+      />
+      <div>
+        <h5>Oh non,</h5>
+        <p>Tu n'as pas de plantes à arroser aujour'hui !</p>
       </div>
     </div>
   </div>

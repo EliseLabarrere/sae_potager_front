@@ -29,19 +29,13 @@ export class MyGardenComponent {
   constructor(
     public apiService: ApiService,
   ) {
-    this.apiService.requestApi('/api/task/checkDailyTask').then(
-      (data) => {
-        this.haveToWatering = !data.status;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-
     let today = new Date();
     this.apiService.requestApi('/api/task/one', 'POST', { day: today }).then(
       (data) => {
         this.wateringPlants = data.wateringPlants;
+        if(this.wateringPlants.length > 0){
+          this.checkWateringState()
+        }
       },
       (error) => {
         console.log(error);
@@ -69,6 +63,9 @@ export class MyGardenComponent {
       }
     );
   }
+  // ngOnInit(){
+  //   this.checkWateringState();
+  // }
 
 
   doDailyTasks() {
@@ -117,6 +114,17 @@ export class MyGardenComponent {
     }
     showLessPlants() {
       this.showAllPlants = false;
+    }
+
+    checkWateringState(){
+      this.apiService.requestApi('/api/task/checkDailyTask').then(
+        (data) => {
+          this.haveToWatering = !data.status;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     }
 
 }
