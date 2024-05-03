@@ -155,7 +155,7 @@
       @apply text-base;
     }
     .link{
-      @apply text-base text-primary underline;
+      @apply text-base text-white underline;
     }
 
     //NAVBAR
@@ -182,27 +182,3 @@
             }
         }
     }
-
-      //CARDS
-      .card-peels{
-        @apply bg-white shadow;
-
-        &.cards-small{
-          @apply rounded-lg p-2;
-        }
-
-        &.cards-large{
-          @apply rounded-xl p-4;
-        }
-      }
-      .card-peels-colored{
-        @apply bg-primary shadow text-primary-content;
-
-        &.cards-small{
-          @apply rounded-lg p-2;
-        }
-
-        &.cards-large{
-          @apply rounded-xl p-4;
-        }
-      }

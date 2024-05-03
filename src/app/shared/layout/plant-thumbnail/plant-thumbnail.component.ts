@@ -9,4 +9,5 @@ import { Input } from '@angular/core';
 })
 export class PlantThumbnailComponent {
   @Input() plant: Plant | undefined;
+  @Input() index: number = 1;
 }

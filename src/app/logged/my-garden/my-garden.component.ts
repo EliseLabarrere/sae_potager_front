@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../shared/services/api.service';
 import { ViewChild } from '@angular/core';
+import { Plant } from '../../shared/models/plant.model';
+import { PlantUser } from '../../shared/models/plant_user.model';
 
 @Component({
   selector: 'app-my-garden',
@@ -9,12 +11,14 @@ import { ViewChild } from '@angular/core';
 })
 export class MyGardenComponent {
   @ViewChild('dialogRemoveFromGarden') dialogRemoveFromGarden: any;
-  wateringPlants: any;
+  wateringPlants: Plant[] = [];
   haveToWatering: boolean = true;
-  plantsThisMonth: any;
-  plantsNextMonths: any;
-  allMyPlants: any;
+  plantsThisMonth: Plant[] = [];
+  plantsNextMonths: Plant[] = [];
+  allMyPlants: PlantUser[] = [];
   harvestedPlant: any = null;
+
+  showAllPlantsHarvest: boolean = false;
 
   constructor(public apiService: ApiService) {
     this.apiService.requestApi('/api/task/checkDailyTask').then(
@@ -55,6 +59,7 @@ export class MyGardenComponent {
       }
     );
   }
+
   doDailyTasks() {
     this.apiService.requestApi('/api/task/valid').then(
       (data) => {
@@ -86,4 +91,14 @@ export class MyGardenComponent {
         }
       );
   }
+
+
+  // Load More plants
+  loadMorePlantsHarvest() {
+    this.showAllPlantsHarvest = true;
+  }
+  showLessPlantsHarvest() {
+    this.showAllPlantsHarvest = false;
+  }
+
 }
