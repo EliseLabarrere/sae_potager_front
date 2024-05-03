@@ -2,7 +2,7 @@
 <div class="px-8 mt-[6.875rem] pb-36">
   <div class="section">
     <h4>Missions du jour</h4>
-    <div *ngIf="haveToWatering" class="p-6 bg-success text-white rounded-md">
+    <div *ngIf="haveToWatering" class="p-6 bg-success rounded-md">
       <div class="grid grid-cols-3 gap-4">
         <a
           [routerLink]="'/list-plants/'+[plant.id]"
