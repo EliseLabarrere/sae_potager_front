@@ -3,6 +3,7 @@ import { ApiService } from '../../shared/services/api.service';
 import { ViewChild } from '@angular/core';
 import { Plant } from '../../shared/models/plant.model';
 import { PlantUser } from '../../shared/models/plant_user.model';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-my-garden',
@@ -19,8 +20,13 @@ export class MyGardenComponent {
   harvestedPlant: any = null;
 
   showAllPlantsHarvest: boolean = false;
+  showAllPlants: boolean = false;
 
-  constructor(public apiService: ApiService) {
+
+
+  constructor(
+    public apiService: ApiService,
+  ) {
     this.apiService.requestApi('/api/task/checkDailyTask').then(
       (data) => {
         this.haveToWatering = !data.status;
@@ -60,6 +66,7 @@ export class MyGardenComponent {
     );
   }
 
+
   doDailyTasks() {
     this.apiService.requestApi('/api/task/valid').then(
       (data) => {
@@ -92,13 +99,20 @@ export class MyGardenComponent {
       );
   }
 
-
-  // Load More plants
+  // Load More plants Harvest
   loadMorePlantsHarvest() {
     this.showAllPlantsHarvest = true;
   }
   showLessPlantsHarvest() {
     this.showAllPlantsHarvest = false;
   }
+
+    // Load More plants
+    loadMorePlants() {
+      this.showAllPlants = true;
+    }
+    showLessPlants() {
+      this.showAllPlants = false;
+    }
 
 }

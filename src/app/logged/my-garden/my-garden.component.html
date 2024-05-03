@@ -92,7 +92,7 @@
           </div>
           <!-- Afficher le lien "voir plus" si le nombre de zones est supérieur à 2 -->
           <div class="w-full flex justify-center">
-            <a *ngIf="plantsNextMonths.length > 2 && !showAllPlantsHarvest" (click)="loadMorePlantsHarvest()" class="link">Charger plus</a>
+            <a *ngIf="plantsNextMonths.length > 2 && !showAllPlantsHarvest" (click)="loadMorePlantsHarvest()" class="link">Voir tout</a>
             <a *ngIf="showAllPlantsHarvest" (click)="showLessPlantsHarvest()" class="link">Voir moins</a>
           </div>
         </div>
@@ -107,11 +107,19 @@
 
   <div class="section">
     <h4>Mes plantes</h4>
-    <div class="w-full flex flex-row overflow-x-scroll gap-4">
-      <a [routerLink]="'/list-plants/'+[plant.id]" *ngFor="let plant of allMyPlants"
+    <div *ngIf="allMyPlants.length< 1" class="flex justify-center w-full">
+      <p>Vous n'avez pas de plante dans votre potager, <a class="text-primary underline" routerLink="/list-plants">ajouter une plante</a></p>
+    </div>
+    <div class="grid grid-cols-3 gap-4">
+      <a [routerLink]="'/list-plants/'+[plant.id]" *ngFor="let plant of (showAllPlants ?  allMyPlants :  allMyPlants.slice(0, 6))"
         class="bg-base-200 flex flex-col items-center justify-center rounded-md h-24">
         <app-plant-thumbnail class="w-28 p-2" [plant]="plant" [index]="plant.number_of_plant"></app-plant-thumbnail>
       </a>
+    </div>
+    <!-- Afficher le lien "voir plus" si le nombre de zones est supérieur à 2 -->
+    <div class="w-full flex justify-center">
+      <a *ngIf="allMyPlants.length > 6 && !showAllPlants" (click)="loadMorePlants()" class="text-primary underline mt-2">Voir tout</a>
+      <a *ngIf="showAllPlants" (click)="showLessPlants()" class="text-primary underline mt-2">Voir moins</a>
     </div>
   </div>
 
