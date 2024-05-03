@@ -16,6 +16,8 @@ export class MyGardenComponent {
   haveToWatering: boolean = true;
   plantsThisMonth: Plant[] = [];
   plantsNextMonths: Plant[] = [];
+  thereIsPlantsThisMonth: boolean = false;
+  thereIsPlantsNextMonths: boolean = false;
   allMyPlants: PlantUser[] = [];
   harvestedPlant: any = null;
 
@@ -50,6 +52,8 @@ export class MyGardenComponent {
       (data) => {
         this.plantsThisMonth = data.plantsThisMonth;
         this.plantsNextMonths = data.plantsNextMonths;
+        this.plantsThisMonth.length > 0 ? this.thereIsPlantsThisMonth = true : this.thereIsPlantsThisMonth = false;
+        this.plantsNextMonths.length > 0 ? this.thereIsPlantsNextMonths = true : this.thereIsPlantsThisMonth = false;
       },
       (error) => {
         console.log(error);
