@@ -21,7 +21,7 @@
       </p>
       <div class="grid grid-cols-3 gap-4 m-6 mt-2">
         <a
-          [routerLink]="[plant.id]"
+          [routerLink]="'/list-plants/'+[plant.id]"
           *ngFor="let plant of modalPlants"
           class="bg-base-200 flex flex-col items-center justify-center rounded-md h-24"
         >
