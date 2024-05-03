@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../shared/services/api.service';
 import { ViewChild } from '@angular/core';
+import { Plant } from '../../shared/models/plant.model';
+import { PlantUser } from '../../shared/models/plant_user.model';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-my-garden',
@@ -9,14 +12,21 @@ import { ViewChild } from '@angular/core';
 })
 export class MyGardenComponent {
   @ViewChild('dialogRemoveFromGarden') dialogRemoveFromGarden: any;
-  wateringPlants: any;
+  wateringPlants: Plant[] = [];
   haveToWatering: boolean = true;
-  plantsThisMonth: any;
-  plantsNextMonths: any;
-  allMyPlants: any;
+  plantsThisMonth: Plant[] = [];
+  plantsNextMonths: Plant[] = [];
+  allMyPlants: PlantUser[] = [];
   harvestedPlant: any = null;
 
-  constructor(public apiService: ApiService) {
+  showAllPlantsHarvest: boolean = false;
+  showAllPlants: boolean = false;
+
+
+
+  constructor(
+    public apiService: ApiService,
+  ) {
     this.apiService.requestApi('/api/task/checkDailyTask').then(
       (data) => {
         this.haveToWatering = !data.status;
@@ -55,6 +65,8 @@ export class MyGardenComponent {
       }
     );
   }
+
+
   doDailyTasks() {
     this.apiService.requestApi('/api/task/valid').then(
       (data) => {
@@ -86,4 +98,21 @@ export class MyGardenComponent {
         }
       );
   }
+
+  // Load More plants Harvest
+  loadMorePlantsHarvest() {
+    this.showAllPlantsHarvest = true;
+  }
+  showLessPlantsHarvest() {
+    this.showAllPlantsHarvest = false;
+  }
+
+    // Load More plants
+    loadMorePlants() {
+      this.showAllPlants = true;
+    }
+    showLessPlants() {
+      this.showAllPlants = false;
+    }
+
 }

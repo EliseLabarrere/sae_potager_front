@@ -15,5 +15,5 @@
     <div *ngIf="plant.img">
         <img class="w-11" alt="plant" [src]="'../../../assets/'+plant.img"/>
     </div>
-    <p>{{plant.name}}</p>
+    <p>{{plant.name}}<span *ngIf="index > 1"> x {{index}}</span></p>
 </div>
