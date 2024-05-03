@@ -37,7 +37,7 @@
 <dialog #dialogAddPlant class="w-4/5 p-4 shadow-lg rounded-lg bg-[#212E50]">
     <div class="flex flex-col justify-between h-full">
         <div class="flex justify-end">
-        <button (click)="dialogAddPlant.close()"><mat-icon class="text-white">close</mat-icon></button> 
+        <button (click)="dialogAddPlant.close()"><mat-icon class="text-white">close</mat-icon></button>
         </div>
         <div class="flex gap-4 mb-4">
             <div class="flex w-full justify-center">
@@ -45,7 +45,7 @@
             </div>
             <div class="flex flex-col">
                 <p class=" text-white">Combien de <span class="text-success">{{plantChosen?.name}}s</span> à ajouter à votre potager</p>
-                <input type="number" class="input input-bordered w-full mt-2" [(ngModel)]="quantity" placeholder="Quantité" required>
+                <input type="number" class="input input-bordered w-full mt-2" min="0" [(ngModel)]="quantity" placeholder="Quantité" required>
             </div>
         </div>
         <!-- Modal content -->

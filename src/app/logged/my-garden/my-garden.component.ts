@@ -24,6 +24,8 @@ export class MyGardenComponent {
   showAllPlantsHarvest: boolean = false;
   showAllPlants: boolean = false;
 
+  quantity: number = 0;
+
 
 
   constructor(
@@ -81,17 +83,19 @@ export class MyGardenComponent {
 
   harvestModel(plant: any) {
     this.harvestedPlant = plant;
+    console.log(this.harvestedPlant.start_harvest_month_nbr);
     setTimeout(() => {
         this.dialogRemoveFromGarden.nativeElement.showModal();
     });
 }
 
 
-  harvestSave(id: any, remove: boolean) {
+  harvestSave(id: any) {
     this.apiService
       .requestApi('/api/task/harvest', 'POST', {
         idPlant: id,
-        removeFromGarden: remove,
+        numberToRemove: this.quantity,
+        harvest: true,
       })
       .then(
         (data) => {

@@ -63,7 +63,6 @@ export class LogBookComponent {
             },
           };
           this.events.push(event)
-          // console.log(this.events)
         }
         this.cdRef.detectChanges();
         this.reloadCalendar = true;

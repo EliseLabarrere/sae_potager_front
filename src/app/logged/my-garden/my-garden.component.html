@@ -2,7 +2,10 @@
 <div class="px-8 mt-[6.875rem] pb-36">
   <div class="section">
     <h4>Missions du jour</h4>
-    <div *ngIf="haveToWatering && this.wateringPlants.length != 0" class="p-6 bg-success rounded-md">
+    <div
+      *ngIf="haveToWatering && this.wateringPlants.length != 0"
+      class="p-6 bg-success rounded-md"
+    >
       <div class="grid grid-cols-3 gap-4">
         <a
           [routerLink]="'/list-plants/' + [plant.id]"
@@ -295,24 +298,29 @@
         <mat-icon>close</mat-icon>
       </button>
     </div>
-    <!-- Modal content -->
     <h4 class="text-white text-lg font-bold text-center mt-2 mb-4">
-      Tu as récolté {{ harvestedPlant.name }}
+      Récolte de {{ harvestedPlant.name }}
     </h4>
-    <p class="mb-4 text-white">Souhaites-tu l'enlever de ton Jardin ?</p>
-    <div class="flex flex-row justify-between gap-4">
-      <button
-        class="btn btn-primary flex-1"
-        (click)="harvestSave(harvestedPlant.id, true)"
-      >
-        Oui
-      </button>
-      <button
-        class="btn btn-white flex-1"
-        (click)="harvestSave(harvestedPlant.id, false)"
-      >
-        Non
-      </button>
+    <div class="flex gap-4 mb-4">
+      <div class="flex flex-col">
+        <p class="text-white">Combien souhaites-tu en enlever de ton jardin ?</p>
+        <input
+          type="number"
+          class="input input-bordered w-full mt-2"
+          min="0"
+          [max]="harvestedPlant.number_of_plant_nbr"
+          [(ngModel)]="quantity"
+          placeholder="Quantité"
+          required
+        />
+      </div>
     </div>
+    <!-- Modal content -->
+    <button
+      (click)="harvestSave(harvestedPlant.id)"
+      class="btn btn-primary w-full mb-2"
+    >
+      Ajouter à mon potager
+    </button>
   </div>
 </dialog>

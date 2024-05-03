@@ -13,6 +13,8 @@ import { error } from 'console';
 })
 export class PlantComponent implements OnInit{
   @ViewChild('dialogAddPlant') dialogAddPlant: any;
+  @ViewChild('dialogRemovePlant') dialogRemovePlant: any;
+
   user: User|undefined;
   plant?: Plant = undefined;
   numberOfPlant: number = 0;
@@ -36,7 +38,6 @@ export class PlantComponent implements OnInit{
       this.apiService.requestApi('/api/plant/' + params['id']).then(
         (data) => {
           this.plant = data;
-          console.log(data);
           if (!this.plant) {
             this.router.navigate(['list-plants']);
           }else{
@@ -87,11 +88,9 @@ export class PlantComponent implements OnInit{
 }
 
 setNumberOfPlant(id:number){
-  console.log('id de la plant', id)
   this.apiService.requestApi('/api/user/numberPlants/' + this.plant?.id).then(
     (data) => {
       this.numberOfPlant = data.number_of_plants;
-      console.log(data)
     },
     (error) => {
       console.log(error);
@@ -109,6 +108,10 @@ setNumberOfPlant(id:number){
     this.dialogAddPlant.nativeElement.showModal();
   }
 
+  openModalRemovePlant() {
+    this.dialogRemovePlant.nativeElement.showModal();
+  }
+
   validAddPlant(){
     let req={
       plant_id: this.plant?.id,
@@ -116,15 +119,31 @@ setNumberOfPlant(id:number){
     }
     this.apiService.requestApi('/api/user/addInGarden/', 'POST', req).then(
       (data) => {
-        console.log('success plant added', data);
         this.numberOfPlant += req.number_to_add;
       },
       (error) => {
         console.log(error);
       },
     );
-    console.log('plant added');
     this.dialogAddPlant.nativeElement.close();
+  }
+
+  validRemovePlant(id:number){
+    this.apiService
+    .requestApi('/api/task/harvest', 'POST', {
+      idPlant: id,
+      numberToRemove: this.quantity,
+      harvest: false,
+    })
+    .then(
+      (data) => {
+        this.dialogRemovePlant.nativeElement.close();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    this.numberOfPlant -= this.quantity;
   }
 
 }

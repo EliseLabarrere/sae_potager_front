@@ -21,7 +21,10 @@
           <div class="flex items-center gap-2">
           <h3>{{plant?.name}}</h3>
           </div>
+          <div class="flex flex-row gap-2">
             <button (click)="openModalAddPlant()" class="btn btn-primary"><mat-icon>add</mat-icon>Ajouter</button>
+            <button (click)="openModalRemovePlant()" class="btn btn-[#212e50]"><mat-icon>macro_off</mat-icon></button>
+          </div>
         </div>
         <div class="flex-1 overflow-y-auto">
           <div *ngIf="numberOfPlant > 0" class="justify-center gap-2 bg-base-200 text-[#125944] rounded-md flex items-center p-4 w-full mb-4"><mat-icon>check</mat-icon> <p>Vous possédez  {{ numberOfPlant }} {{plant?.name}}<span *ngIf="numberOfPlant > 1">s</span></p></div>
@@ -77,7 +80,7 @@
 <dialog #dialogAddPlant class="w-4/5 p-4 shadow-lg rounded-lg bg-[#212E50]">
   <div class="flex flex-col justify-between h-full">
       <div class="flex justify-end">
-      <button (click)="dialogAddPlant.close()"><mat-icon class="text-white">close</mat-icon></button> 
+      <button (click)="dialogAddPlant.close()"><mat-icon class="text-white">close</mat-icon></button>
       </div>
       <div class="flex gap-4 mb-4">
           <div class="flex w-full justify-center">
@@ -90,5 +93,38 @@
       </div>
       <!-- Modal content -->
       <button (click)="validAddPlant()" class="btn btn-primary w-full mb-2">Ajouter à mon potager</button>
+  </div>
+</dialog>
+
+<dialog
+  #dialogRemovePlant
+  *ngIf="plant"
+  class="w-4/5 p-6 shadow-lg rounded-lg bg-[#212E50]"
+>
+  <div class="flex flex-col justify-between h-full">
+    <div class="flex justify-end text-white">
+      <button (click)="dialogRemovePlant.close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="flex gap-4 mb-4">
+      <div class="flex flex-col">
+        <p class="text-white">Combien souhaites-tu en enlever de ton jardin ?</p>
+        <input
+          type="number"
+          class="input input-bordered w-full mt-2"
+          min="0"
+          [(ngModel)]="quantity"
+          placeholder="Quantité"
+          required
+        />
+      </div>
+    </div>
+    <button
+      (click)="validRemovePlant(plant.id)"
+      class="btn btn-primary w-full mb-2"
+    >
+      Retirer de mon potager
+    </button>
   </div>
 </dialog>
