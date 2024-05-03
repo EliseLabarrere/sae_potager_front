@@ -19,7 +19,8 @@ export class MyGardenComponent {
   constructor(public apiService: ApiService) {
     this.apiService.requestApi('/api/task/checkDailyTask').then(
       (data) => {
-        this.haveToWatering = data.success;
+        this.haveToWatering = !data.status;
+        console.log("haveToWatering", this.haveToWatering)
       },
       (error) => {
         console.log(error);
