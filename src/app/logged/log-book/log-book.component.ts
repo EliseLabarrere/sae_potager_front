@@ -46,17 +46,20 @@ export class LogBookComponent {
 
     this.apiService.requestApi('/api/task/completed', 'POST', req).then(
       (data) => {
+        console.log(data)
         for (let i = 0; i < data.tasks.length; i++) {
+          let color = data.tasks[i].watering ? "#212e50" : "#ec7245";
           const event = {
-            start: new Date(data.tasks[i]),
-            title: 'Missions du ' + data.tasks[i] +' effectuées',
+            start: new Date(data.tasks[i].created_at),
+            title: 'Missions du ' + data.tasks[i].created_at +' effectuées',
             allDay: true,
             color: {
-              primary: '#ad2121',
-              secondary: '#FAE3E3',
+              primary: color,
+              secondary: color,
             },
           };
           this.events.push(event)
+          // console.log(this.events)
         }
         this.cdRef.detectChanges();
         this.reloadCalendar = true;
