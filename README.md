@@ -1,27 +1,47 @@
-# PotagerFront
+# Guide de Configuration du Front-end Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
+Ce guide vous aidera à configurer le front-end Angular après avoir récupéré le code depuis le dépôt Git.
 
-## Development server
+## Installation des Dépendances
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Avant de démarrer, assurez-vous d'avoir Node.js et npm installés sur votre machine. Ensuite, suivez ces étapes :
 
-## Code scaffolding
+1. Ouvrez un terminal et accédez au répertoire du projet Angular.
+2. Exécutez la commande suivante pour installer les dépendances :
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+npm install
+```
 
-## Build
+## Configuration de Meilisearch
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Pour configurer Meilisearch, assurez-vous que votre backend Laravel est correctement configuré avec Scout. Ensuite, suivez ces étapes :
 
-## Running unit tests
+1.    Exécutez la commande suivante pour synchroniser les paramètres de l'index :
+```bash
+php artisan scout:sync-index-settings
+```
+2.    Ensuite, importez les données nécessaires dans Meilisearch en exécutant la commande suivante :
+```bash
+php artisan scout:import "App\Models\Post"
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Configuration du Calendrier
 
-## Running end-to-end tests
+Si votre application utilise le module de calendrier Angular, suivez ces étapes :
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1.    Installez le module Angular Calendar en exécutant la commande suivante :
+```bash
+ng add angular-calendar
+```
+2.    Installez la bibliothèque date-fns en exécutant la commande suivante :
+```bash
+npm install date-fns
+```
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Démarrage du Serveur de Développement
+Une fois que vous avez terminé les étapes ci-dessus, vous pouvez démarrer le serveur de développement Angular en exécutant la commande suivante :
+```bash
+npm install date-fns
+```
+Le serveur de développement démarrera à l'adresse par défaut http://localhost:4200.
