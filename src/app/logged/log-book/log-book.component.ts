@@ -47,10 +47,15 @@ export class LogBookComponent {
     this.apiService.requestApi('/api/task/completed', 'POST', req).then(
       (data) => {
         for (let i = 0; i < data.tasks.length; i++) {
-          let color = data.tasks[i].watering ? "#212e50" : "#ec7245";
+          let color = "#ec7245";
+          let title = 'Plante(s) récolté(s) le ' + data.tasks[i].created_at
+          if (data.tasks[i].watering){
+            color =  "#212e50";
+            title = 'Missions du ' + data.tasks[i].created_at +' effectuées';
+          }
           const event = {
             start: new Date(data.tasks[i].created_at),
-            title: 'Missions du ' + data.tasks[i].created_at +' effectuées',
+            title: title,
             allDay: true,
             color: {
               primary: color,
