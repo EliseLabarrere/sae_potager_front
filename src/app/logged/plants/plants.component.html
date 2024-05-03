@@ -1,5 +1,6 @@
 <app-heading [activeBack]=false title="Encyclopédie des plantes"></app-heading>
 <div class="px-8 mt-[8rem] pb-36 ">
+
     <div class="bg-[#212E50] p-4 rounded-md">
         <h4 class="mb-4 text-white">Que planter ce mois-ci ?</h4>
         <div class="grid grid-cols-3 gap-4">
@@ -9,6 +10,7 @@
             </a>
         </div>
     </div>
+
     <form [formGroup]="searchForm" class="my-4">
         <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search Plant</label>
         <div class="flex justify-between bg-white p-4 input input-bordered align-middle items-center">
@@ -17,6 +19,8 @@
             <button (click)="search()"><mat-icon>search</mat-icon></button>
         </div>
     </form>
+
+    <!-- Categories -->
     <div *ngIf="!resultSearch">
         <div *ngFor="let categ of categs" class="mb-8">
             <h4 class="mb-4">{{categ.name}}</h4>
@@ -28,15 +32,13 @@
             </div>
         </div>
     </div>
+
+    <!-- Search result -->
     <div *ngIf="resultSearch">
         <div class="grid grid-cols-3 gap-4">
             <a [routerLink]="[result.id]" *ngFor="let result of resultSearch"
             class="bg-base-200 flex flex-col items-center justify-center rounded-md h-24">
             <app-plant-thumbnail [plant]="result"></app-plant-thumbnail>
-            <div *ngIf="result.img">
-                <img class="w-11" alt="plant" [src]="'../../../assets/'+result?.img"/>
-            </div>
-            <p>{{result.name}}</p>
         </a>
         </div>
         <div class="w-full flex justify-center" (click)="cancelSearch()">

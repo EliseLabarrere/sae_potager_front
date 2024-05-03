@@ -2,7 +2,7 @@
 <div *ngIf="plant && plant.growing_time" class="mb-8">
     <h5 class="mb-2">Voisinage bénéfique</h5>
     <div class="grid grid-cols-3 gap-4">
-        <a [routerLink]="[plant.id]" *ngFor="let plant of compatible"
+        <a [routerLink]="'/list-plants/'+[plant.id]" *ngFor="let plant of compatible"
         class="bg-base-200 text-[#125944] flex flex-col items-center justify-center rounded-md h-24">
             <app-plant-thumbnail [plant]="plant"></app-plant-thumbnail>
         </a>
@@ -13,7 +13,7 @@
 <div *ngIf="plant && plant.growing_time" class="mb-8">
     <h5 class="mb-2">Voisinage à éviter</h5>
     <div class="grid grid-cols-3 gap-4">
-        <a [routerLink]="[plant.id]" *ngFor="let plant of noCompatible"
+        <a [routerLink]="'/list-plants/'+[plant.id]" *ngFor="let plant of noCompatible"
         class="bg-[#FFD5C6] text-primary flex flex-col items-center justify-center rounded-md h-24">
             <app-plant-thumbnail [plant]="plant"></app-plant-thumbnail>
         </a>

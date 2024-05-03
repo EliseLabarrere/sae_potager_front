@@ -2,10 +2,10 @@
 <div class="px-8 mt-[6.875rem] pb-36">
   <div class="section">
     <h4>Missions du jour</h4>
-    <div *ngIf="haveToWatering" class="p-6 bg-success rounded-md">
+    <div *ngIf="haveToWatering" class="p-6 bg-success text-white rounded-md">
       <div class="grid grid-cols-3 gap-4">
         <a
-          [routerLink]="[plant.id]"
+          [routerLink]="'/list-plants/'+[plant.id]"
           *ngFor="let plant of wateringPlants"
           class="bg-white flex flex-col items-center justify-center rounded-md h-24"
         >
@@ -21,7 +21,7 @@
     </div>
     <div
       *ngIf="!haveToWatering"
-      class="p-6 bg-success rounded-md flex flex-row"
+      class="p-6 bg-success text-white rounded-md flex flex-row"
     >
       <img
         class="w-20 mr-6"
@@ -30,14 +30,14 @@
       />
       <div>
         <h5>Félicitation,</h5>
-        <p>tu as pensé à arroser toutes tes plantes !</p>
+        <p>Tu as pensé à arroser toutes tes plantes !</p>
       </div>
     </div>
   </div>
 
   <div class="section">
     <h4>Mes récoltes</h4>
-    <div class="flex flex-col bg-primary p-6 rounded-md gap-6">
+    <div class="flex flex-col bg-primary text-white p-6 rounded-md gap-6">
       <div>
         <h5>Période de récolte en cours</h5>
         <div class="grid grid-cols-2 gap-4">
@@ -115,7 +115,7 @@
             class="flex flex-row items-center gap-2"
           >
             <a
-              [routerLink]="[plant.id]"
+              [routerLink]="'/list-plants/'+[plant.id]"
               class="bg-white flex flex-col items-center justify-center rounded-full h-12 w-12"
             >
               <div
@@ -183,7 +183,7 @@
     <h4>Mes plantes</h4>
     <div class="w-full flex flex-row overflow-x-scroll gap-4">
       <a
-        [routerLink]="[plant.id]"
+        [routerLink]="'/list-plants/'+[plant.id]"
         *ngFor="let plant of allMyPlants"
         class="bg-base-200 flex flex-col items-center justify-center rounded-md h-24"
       >
